@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "241519230842",
+    "project_id": "hair-salon-booking-appointment",
+    "storage_bucket": "hair-salon-booking-appointment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241519230842:android:cea67cb4665973cdace0c3",
+        "android_client_info": {
+          "package_name": "com.example.group8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241519230842-88ql65nsiqbhcqpq9dt95fgro23nvbc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi99QX8vOypOTLUp_GkUjfOPpXsKm0VAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241519230842-88ql65nsiqbhcqpq9dt95fgro23nvbc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
