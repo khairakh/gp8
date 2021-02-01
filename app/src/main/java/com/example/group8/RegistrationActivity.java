@@ -48,7 +48,7 @@ public class RegistrationActivity extends AppCompatActivity {
                                senEmailVerification();
                             }
                             else{
-                                Toast.makeText(RegistrationActivity.this, "Sign up Failed. Password Length must be at least 6 digit.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegistrationActivity.this, "Sign up Failed. Password length must be at least 6 digit.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

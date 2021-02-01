@@ -68,7 +68,7 @@
         android:id="@+id/tvUserLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Already Signed in ? Login"
+        android:text="Already Signed Up? Login"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
