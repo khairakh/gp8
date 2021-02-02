@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_homeicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group8">
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".PasswordActivity"></activity>
+        <activity android:name=".SecondActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
