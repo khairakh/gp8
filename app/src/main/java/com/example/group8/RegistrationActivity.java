@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,10 +21,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText userName, userPassword , userEmail;
+    private EditText userName, userPassword , userEmail, userPhoneNumber;
     private Button regButton;
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
+    private ImageView userProfilePic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +77,8 @@ public class RegistrationActivity extends AppCompatActivity {
         userEmail = (EditText)findViewById(R.id.etUserEmail);
         regButton = (Button)findViewById(R.id.btnRegister);
         userLogin = (TextView)findViewById(R.id.tvUserLogin);
+        userPhoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
+        userProfilePic = (ImageView)findViewById((R.id.ivProfile));
 
     }
 
