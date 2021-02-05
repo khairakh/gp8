@@ -18,6 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.sql.DatabaseMetaData;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -26,6 +30,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
+    String email, name , phonenumber , password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,11 +90,12 @@ public class RegistrationActivity extends AppCompatActivity {
     private Boolean validate(){
         Boolean result = false;
 
-        String name = userName.getText().toString();
-        String password = userPassword.getText().toString();
-        String email = userEmail.getText().toString();
+         name = userName.getText().toString();
+         password = userPassword.getText().toString();
+         email = userEmail.getText().toString();
+         phonenumber = userPhoneNumber.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty()) {
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || phonenumber.isEmpty()) {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else {
             result = true;
@@ -104,6 +110,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()) {
+                    sendUserData();
                     Toast.makeText(RegistrationActivity.this, "Successfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
                     firebaseAuth.signOut();
                     finish();
@@ -116,6 +123,15 @@ public class RegistrationActivity extends AppCompatActivity {
             });
         }
     }
+
+    private void sendUserData(){
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+        UserProfile userProfile = new UserProfile(phonenumber, email, name);
+        myRef.setValue(userProfile);
+    }
+
 
 }
 
