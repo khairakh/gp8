@@ -4,14 +4,14 @@
 
     <item
         android:id="@+id/logoutMenu"
-        android:orderInCategory="100"
-        app:showAsAction="always"
+        android:orderInCategory="200"
+        app:showAsAction="never"
         android:title="Logout">
     </item>
 
     <item
         android:id="@+id/profileMenu"
-        android:orderInCategory="200"
+        android:orderInCategory="100"
         app:showAsAction="never"
         android:title="Profile">
     </item>

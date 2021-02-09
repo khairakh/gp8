@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_homeicon"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group8">
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".UpdatePassword"></activity>
+        <activity android:name=".UpdateProfile" />
+        <activity android:name=".ProfileActivity" />
         <activity android:name=".PasswordActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".RegistrationActivity" />

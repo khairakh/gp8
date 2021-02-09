@@ -7,17 +7,31 @@
     android:background="#F5EDDA"
     tools:context=".ProfileActivity">
 
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#98694F"
+        android:text="change password"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnProfileUpdate"
+        app:layout_constraintVertical_bias="0.354" />
+
     <ImageView
         android:id="@+id/ivProfilePic"
         android:layout_width="110dp"
         android:layout_height="110dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.064"
-        app:srcCompat="@mipmap/ic_homeicon" />
+        app:layout_constraintVertical_bias="0.106"
+        app:srcCompat="@mipmap/user" />
 
     <TextView
         android:id="@+id/tvProfileName"
@@ -30,7 +44,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfilePic"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <TextView
         android:id="@+id/tvProfileEmail"
@@ -51,10 +65,14 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#98694F"
         android:text="Edit"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail"
+        app:layout_constraintVertical_bias="0.315" />
 
     <TextView
         android:id="@+id/tvProfilePhoneNumber"

@@ -9,7 +9,7 @@ public class UserProfile {
 
     }
 
-    public  UserProfile (String userPhoneNumber, String userEmail , String userName ) {
+    public  UserProfile (String userEmail, String userName  , String userPhoneNumber ) {
         this.userPhoneNumber = userPhoneNumber;
         this.userEmail = userEmail;
         this.userName = userName;

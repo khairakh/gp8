@@ -30,7 +30,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView userLogin;
     private FirebaseAuth firebaseAuth;
     private ImageView userProfilePic;
-    String email, name , phonenumber , password;
+    String email, name , number , password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,9 +93,9 @@ public class RegistrationActivity extends AppCompatActivity {
          name = userName.getText().toString();
          password = userPassword.getText().toString();
          email = userEmail.getText().toString();
-         phonenumber = userPhoneNumber.getText().toString();
+         number = userPhoneNumber.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || phonenumber.isEmpty()) {
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || number.isEmpty()) {
             Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
         }else {
             result = true;
@@ -128,7 +128,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
-        UserProfile userProfile = new UserProfile(phonenumber, email, name);
+        UserProfile userProfile = new UserProfile(email, name, number );
         myRef.setValue(userProfile);
     }
 
