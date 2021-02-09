@@ -9,4 +9,17 @@
         android:title="Logout">
     </item>
 
+    <item
+        android:id="@+id/profileMenu"
+        android:orderInCategory="200"
+        app:showAsAction="never"
+        android:title="Profile">
+    </item>
+
+    <item
+        android:id="@+id/refreshMenu"
+        android:orderInCategory="300"
+        app:showAsAction="never"
+        android:title="Refresh">
+    </item>
 </menu>

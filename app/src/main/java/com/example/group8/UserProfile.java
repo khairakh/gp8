@@ -1,13 +1,41 @@
 package com.example.group8;
 
 public class UserProfile {
-    public String PhoneNumber;
-    public String Email;
-    public String Name;
+    public String userPhoneNumber;
+    public String userEmail;
+    public String userName;
+
+    public UserProfile(){
+
+    }
 
     public  UserProfile (String userPhoneNumber, String userEmail , String userName ) {
-        this.PhoneNumber = userPhoneNumber;
-        this.Email = userEmail;
-        this.Name = userName;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userEmail = userEmail;
+        this.userName = userName;
+    }
+
+    public String getUserPhoneNumber() {
+        return userPhoneNumber;
+    }
+
+    public void setUserPhoneNumber(String userPhoneNumber) {
+        this.userPhoneNumber = userPhoneNumber;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }
