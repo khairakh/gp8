@@ -17,39 +17,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.156"
-        app:srcCompat="@mipmap/user" />
+        app:srcCompat="@mipmap/add_picture" />
 
     <EditText
         android:id="@+id/etNameUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:background="@drawable/style"
+        android:drawableLeft="@mipmap/name"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfileUpdate"
-        app:layout_constraintVertical_bias="0.138" />
+        app:layout_constraintVertical_bias="0.097" />
 
     <EditText
         android:id="@+id/etEmailUpdate"
-        android:layout_width="241dp"
-        android:layout_height="47dp"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:background="@drawable/style"
+        android:drawableLeft="@mipmap/email"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPhoneNumberUpdate"
-        app:layout_constraintVertical_bias="0.164" />
+        app:layout_constraintVertical_bias="0.119" />
 
     <EditText
         android:id="@+id/etPhoneNumberUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="43dp"
+        android:background="@drawable/style"
+        android:drawableLeft="@mipmap/call"
+        android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
@@ -65,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#98694F"
+        android:background="@drawable/style"
         android:text="Save"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
