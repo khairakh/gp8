@@ -9,12 +9,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SecondActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    private TextView profileMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,15 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        profileMenu = findViewById(R.id.profileMenu);
+
+
+        profileMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, ProfileActivity.class));
+            }
+        });
     }
 
     @Override
@@ -43,9 +54,9 @@ public class SecondActivity extends AppCompatActivity {
                 Logout();
                 break;
             }
-            case R.id.profileMenu:
-                startActivity(new Intent(SecondActivity.this, ProfileActivity.class));
-                break;
+            //case R.id.profileMenu:
+                //startActivity(new Intent(SecondActivity.this, ProfileActivity.class));
+                //break;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -9,8 +9,9 @@
 
     <ImageView
         android:id="@+id/ivProfileUpdate"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="162dp"
+        android:layout_height="134dp"
+        android:background="@drawable/style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

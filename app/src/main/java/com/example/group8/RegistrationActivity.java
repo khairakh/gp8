@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,9 +80,10 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        if (firebaseAuth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            finish();
+        }
 
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +97,10 @@ public class RegistrationActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
-                               senEmailVerification();
+                               sendEmailVerification();
                             }
                             else{
-                                Toast.makeText(RegistrationActivity.this, "Sign up Failed. Password length must be at least 6 digit.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegistrationActivity.this, "Sign up Failed.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -111,8 +113,6 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
-
-
             }
         });
 
@@ -125,7 +125,7 @@ public class RegistrationActivity extends AppCompatActivity {
         regButton = (Button)findViewById(R.id.btnRegister);
         userLogin = (TextView)findViewById(R.id.tvUserLogin);
         userPhoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
-        userProfilePic = (ImageView)findViewById((R.id.ivProfile));
+        userProfilePic = (ImageView)findViewById(R.id.ivProfilePic);
 
     }
 
@@ -145,7 +145,7 @@ public class RegistrationActivity extends AppCompatActivity {
         return result;
     }
 
-    private void senEmailVerification(){
+    private void sendEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser!=null){
             firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -153,8 +153,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()) {
                     sendUserData();
-                    Toast.makeText(RegistrationActivity.this, "Successfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
                     firebaseAuth.signOut();
+                    Toast.makeText(RegistrationActivity.this, "Successfully Registered, Verification mail sent!", Toast.LENGTH_SHORT).show();
                     finish();
                     startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
                     }else{
@@ -168,13 +168,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void sendUserData(){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = firebaseDatabase.getReference(firebaseAuth.getUid());
+        DatabaseReference myRef = firebaseDatabase.getReference("User Info").child(firebaseAuth.getUid());
         StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Picture"); //User Id/Images/Profile_pic
+
         UploadTask uploadTask = imageReference.putFile(imagePath);
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(RegistrationActivity.this, "Upload Failed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationActivity.this, "Upload Failed! ", Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -182,10 +183,19 @@ public class RegistrationActivity extends AppCompatActivity {
                 Toast.makeText(RegistrationActivity.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
             }
         });
-        UserProfile userProfile = new UserProfile(number, email, name);
+        UserProfile userProfile = new UserProfile(email, name, number );
         myRef.setValue(userProfile);
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
 

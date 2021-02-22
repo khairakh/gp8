@@ -25,46 +25,67 @@
 
     <ImageView
         android:id="@+id/ivProfilePic"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="162dp"
+        android:layout_height="134dp"
+        android:background="@drawable/style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.106"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ProfileInfo"
+        app:layout_constraintVertical_bias="0.08"
         app:srcCompat="@mipmap/add_picture" />
 
     <TextView
         android:id="@+id/tvProfileName"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/name"
         android:drawablePadding="10dp"
         android:text="Name:"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivProfilePic"
-        app:layout_constraintVertical_bias="0.143" />
+        app:layout_constraintVertical_bias="0.116" />
 
     <TextView
         android:id="@+id/tvProfileEmail"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/email"
         android:drawablePadding="10dp"
         android:text="Email:"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProfilePhoneNumber"
+        app:layout_constraintVertical_bias="0.127" />
+
+    <TextView
+        android:id="@+id/tvProfilePhoneNumber"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/call"
+        android:drawablePadding="10dp"
+        android:text="Phone Number:"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
-        app:layout_constraintVertical_bias="0.283" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <Button
         android:id="@+id/btnProfileUpdate"
@@ -80,21 +101,23 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvProfileEmail"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <TextView
-        android:id="@+id/tvProfilePhoneNumber"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:drawableLeft="@mipmap/call"
-        android:drawablePadding="10dp"
-        android:text="Phone Number:"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvProfileEmail"
+        android:id="@+id/tv_ProfileInfo"
+        android:layout_width="451dp"
+        android:layout_height="33dp"
+        android:background="@color/PaleTurquoise"
+        android:fontFamily="serif"
+        android:text="USER INFO"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvProfileName"
-        app:layout_constraintVertical_bias="0.52" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
 </androidx.constraintlayout.widget.ConstraintLayout>

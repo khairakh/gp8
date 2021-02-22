@@ -86,18 +86,19 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegister"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <ImageView
-        android:id="@+id/ivProfile"
+        android:id="@+id/ivProfilePic"
         android:layout_width="162dp"
         android:layout_height="134dp"
+        android:background="@drawable/style"
         app:layout_constraintBottom_toTopOf="@+id/etUserName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo" />
+        app:srcCompat="@mipmap/add_picture" />
 
     <EditText
         android:id="@+id/etPhoneNumber"

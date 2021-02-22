@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +47,7 @@ public class UpdateProfile extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null){
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data.getData() != null) {
             imagePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imagePath);
@@ -75,28 +77,54 @@ public class UpdateProfile extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
-        final DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getUid());
+        final DatabaseReference databaseReference = firebaseDatabase.getReference("UserInfo").child(firebaseAuth.getUid());
+        storageReference = firebaseStorage.getReference();
+
+        StorageReference mImageRef = FirebaseStorage.getInstance().getReference().child(firebaseAuth.getUid()).child("Images").child("Profile Picture");
+        final long ONE_MEGABYTE = 1024 * 1024;
+
+        mImageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                DisplayMetrics dm = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                updateProfilePic.setMinimumHeight(dm.heightPixels);
+                updateProfilePic.setMinimumWidth(dm.widthPixels);
+                updateProfilePic.setImageBitmap(bm);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+
+        updateProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select image"), PICK_IMAGE);
+            }
+        });
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
+
                 newUserName.setText(userProfile.getUserName());
                 newUserPhoneNumber.setText(userProfile.getUserPhoneNumber());
                 newUserEmail.setText(userProfile.getUserEmail());
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(UpdateProfile.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        StorageReference storageReference = firebaseStorage.getReference();
-        storageReference.child(firebaseAuth.getUid()).child("images/Profile Pic").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).fit().centerCrop().into(updateProfilePic);
             }
         });
 
@@ -107,35 +135,26 @@ public class UpdateProfile extends AppCompatActivity {
                 String number = newUserPhoneNumber.getText().toString();
                 String email = newUserEmail.getText().toString();
 
-                UserProfile userProfile = new UserProfile(email, name, number );
+                UserProfile userProfile = new UserProfile(email, name, number);
 
                 databaseReference.setValue(userProfile);
 
                 StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Picture"); //User Id/Images/Profile_pic
                 UploadTask uploadTask = imageReference.putFile(imagePath);
+
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(UpdateProfile.this, "Upload Failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateProfile.this, "Photo exceeds 1mb", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(UpdateProfile.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateProfile.this,"Upload Successful", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(UpdateProfile.this, UpdateProfile.class));
                     }
                 });
 
-                finish();
-            }
-        });
-
-        updateProfilePic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent,"Select image"), PICK_IMAGE);
             }
         });
     }
