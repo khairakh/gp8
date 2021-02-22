@@ -75,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
-        final DatabaseReference databaseReference = firebaseDatabase.getReference("UserInfo").child(firebaseAuth.getUid());
+        final DatabaseReference databaseReference = firebaseDatabase.getReference("User Info").child(firebaseAuth.getUid());
         storageReference = firebaseStorage.getReference();
 
         StorageReference mImageRef = FirebaseStorage.getInstance().getReference().child(firebaseAuth.getUid()).child("Images").child("Profile Picture");
@@ -104,11 +104,11 @@ public class ProfileActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
 
-                if (userProfile != null) {
+                //if (userProfile != null) {
                     profileName.setText("Name: " + userProfile.getUserName());
                     profilePhoneNumber.setText("Phone Number: " + userProfile.getUserPhoneNumber());
                     profileEmail.setText("Email: " + userProfile.getUserEmail());
-                }
+                //}
 
             }
 

@@ -5,8 +5,10 @@ public class UserProfile {
     public String userEmail;
     public String userName;
 
+    public UserProfile() {
+    }
 
-    public  UserProfile (String userEmail, String userName  , String userPhoneNumber ) {
+    public  UserProfile (String userEmail, String userName, String userPhoneNumber) {
         this.userPhoneNumber = userPhoneNumber;
         this.userEmail = userEmail;
         this.userName = userName;
