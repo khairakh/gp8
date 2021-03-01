@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group8">
-        <activity android:name=".Feedback"></activity>
+        <activity android:name=".DisplayBooking"></activity>
+        <activity android:name=".BookingForm" />
+        <activity android:name=".FAQ" />
+        <activity android:name=".ContactUs" />
+        <activity android:name=".Feedback" />
         <activity android:name=".AboutUs" />
         <activity android:name=".SplashScreen">
             <intent-filter>

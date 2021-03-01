@@ -94,7 +94,7 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/viewHistory"
+                        android:id="@+id/displayBooking"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_booking" />
@@ -218,7 +218,7 @@
                         android:text="Click 'NEXT' to further book your appointment." />
 
                     <TextView
-                        android:id="@+id/bookingOrder"
+                        android:id="@+id/bookingForm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="25sp"

@@ -24,8 +24,8 @@ import com.google.firebase.storage.FirebaseStorage;
 public class SecondActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private ImageView profileMenu, aboutUs, feedback;
-    private  TextView profileName;
+    private ImageView profileMenu, aboutUs, feedback, contactUs, faq, displayBooking;
+    private  TextView profileName, bookingForm;
     private FirebaseDatabase firebaseDatabase;
 
     @Override
@@ -38,6 +38,10 @@ public class SecondActivity extends AppCompatActivity {
         profileName = findViewById(R.id.tvProfileName);
         aboutUs = findViewById(R.id.aboutUs);
         feedback = findViewById(R.id.feedback);
+        contactUs = findViewById(R.id.contactUs);
+        faq = findViewById(R.id.displayFAQ);
+        bookingForm = findViewById(R.id.bookingForm);
+        displayBooking = findViewById(R.id.displayBooking);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -80,6 +84,35 @@ public class SecondActivity extends AppCompatActivity {
                 startActivity(new Intent(SecondActivity.this, Feedback.class));
             }
         });
+
+        contactUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, ContactUs.class));
+            }
+        });
+
+        faq.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, FAQ.class));
+            }
+        });
+
+        bookingForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, BookingForm.class));
+            }
+        });
+
+        displayBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, DisplayBooking.class));
+            }
+        });
+
     }
 
     @Override
