@@ -3,29 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/aboutUs"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:title="About Us">
-    </item>
-
-    <item
-        android:id="@+id/contactUs"
-        android:orderInCategory="200"
-        app:showAsAction="never"
-        android:title="Contact Us">
-    </item>
-
-    <item
-        android:id="@+id/feedback"
-        android:orderInCategory="300"
-        app:showAsAction="never"
-        android:title="Feedback">
-    </item>
-
-    <item
         android:id="@+id/logoutMenu"
-        android:orderInCategory="400"
+        android:orderInCategory="100"
         app:showAsAction="never"
         android:title="Logout">
     </item>
