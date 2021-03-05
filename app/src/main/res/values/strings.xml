@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">SalonTIME</string>
+
+    <string-array name="services">
+        <item>services1</item>
+        <item>services2</item>
+        <item>services3</item>
+        <item>services4</item>
+        <item>services5</item>
+        <item>services6</item>
+    </string-array>
 </resources>
