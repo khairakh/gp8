@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Group8">
-        <activity android:name=".DisplayBooking"></activity>
+        <activity android:name=".DisplayServices"></activity>
+        <activity android:name=".DisplayBooking" />
         <activity android:name=".BookingForm" />
         <activity android:name=".FAQ" />
         <activity android:name=".ContactUs" />

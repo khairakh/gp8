@@ -205,7 +205,7 @@
                         android:id="@+id/featured_title2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="serif"
+
                         android:lineHeight="23dp"
                         android:text="Let's book now."
                         android:textSize="25sp"

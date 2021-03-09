@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bookingForm"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ourServices"
         app:layout_constraintVertical_bias="0.053" />
 
     <EditText
@@ -42,7 +42,7 @@
         app:layout_constraintVertical_bias="0.051" />
 
     <TextView
-        android:id="@+id/tv_bookingForm"
+        android:id="@+id/tv_ourServices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
