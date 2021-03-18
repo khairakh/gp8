@@ -7,7 +7,13 @@ public class UserBooking {
 
     }
 
-    public  UserBooking (String PhoneNumber, String Name, String Time, String Date, String Services) {
+    public UserBooking (String PhoneNumber, String Name) {
+        this.PhoneNumber = PhoneNumber;
+        this.Name = Name;
+
+    }
+
+    public UserBooking (String PhoneNumber, String Name, String Time, String Date, String Services) {
         this.PhoneNumber = PhoneNumber;
         this.Name = Name;
         this.Time = Time;

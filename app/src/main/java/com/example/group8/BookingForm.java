@@ -50,6 +50,8 @@ public class BookingForm extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     String[] services;
     String number, name, time, date, serviceText; //database
+    String nDate, nTime, ttime, nServices;
+    //UserBooking userBooking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,18 +78,19 @@ public class BookingForm extends AppCompatActivity {
                                 tHour = hourOfDay;
                                 tMinute = minute;
                                 //simpan jam dan minit dalam string
-                                String time = tHour + ":" + tMinute;
+                                ttime = tHour + ":" + tMinute;
                                 //panggil 24hour format
                                 SimpleDateFormat f24hours = new SimpleDateFormat(
                                         "HH:mm"
                                 );
                                 try {
-                                    Date date = f24hours.parse(time);
+                                    Date date = f24hours.parse(ttime);
                                     //panggil 24hours time format
                                     SimpleDateFormat f12hours = new SimpleDateFormat(
                                             "hh:mm aa"
                                     );
                                     //set pilihan time di tv
+                                    nTime = f12hours.format(date);
                                     tvTime.setText(f12hours.format(date));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
@@ -124,15 +127,15 @@ public class BookingForm extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month+1;
-                String date = day+"/"+month+"/"+year;
-                tvDate.setText(date);
+                nDate = day+"/"+month+"/"+year;
+                tvDate.setText(nDate);
             }
         };
 
         //spinner for services
         services = getResources().getStringArray(R.array.services);
         spinnerServices = findViewById(R.id.sp_services);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_checked, services);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, services);
         spinnerServices.setAdapter(adapter);
         spinnerServices.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -143,6 +146,7 @@ public class BookingForm extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Please select a service", Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    nServices = services[index];
                     Toast.makeText(getBaseContext(), "You have selected " + services[index], Toast.LENGTH_SHORT).show();
                 }
             }
@@ -156,10 +160,10 @@ public class BookingForm extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Booking Info").child(firebaseAuth.getUid());
-        UserBooking userBooking = new UserBooking();
+        //firebaseAuth = FirebaseAuth.getInstance();
+        //firebaseDatabase = FirebaseDatabase.getInstance();
+        //databaseReference = firebaseDatabase.getReference("Booking Info").child(firebaseAuth.getUid());
+        //UserBooking userBooking = new UserBooking();
 
         submit = findViewById(R.id.btn_submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -167,13 +171,31 @@ public class BookingForm extends AppCompatActivity {
             public void onClick(View v) {
                 if (validate()){
 
-                    userBooking.setName(etUserName.getText().toString().trim());
-                    userBooking.setPhoneNumber(etPhoneNumber.getText().toString().trim());
-                    userBooking.setDate(tvDate.getText().toString().trim());
-                    userBooking.setTime(tvTime.getText().toString().trim());
-                    userBooking.setServices(spinnerServices.getSelectedItem().toString().trim());
+                    firebaseAuth = FirebaseAuth.getInstance();
+                    firebaseDatabase = FirebaseDatabase.getInstance();
+                    databaseReference = firebaseDatabase.getReference("Booking Data").child(firebaseAuth.getUid());
 
-                    databaseReference.setValue(userBooking);
+                    BookingData bk = new BookingData();
+                    //firebaseDatabase = FirebaseDatabase.getInstance();
+                    //databaseReference = FirebaseDatabase.getInstance().getReference("Booking Info");
+                    //userBooking = new UserBooking();
+                    //userBooking = new UserBooking("sdf", "Sdfsdf", "Sdfsdf", "sfsf", "asdfdsf");
+                    //userBooking.setName(etUserName.getText().toString().trim());
+                    //userBooking.setPhoneNumber(etPhoneNumber.getText().toString().trim());
+                    //userBooking.setDate(tvDate.getText().toString().trim());
+                    //userBooking.setDate(nDate);
+                    ////userBooking.setTime(tvTime.getText().toString().trim());
+                    //userBooking.setTime(ttime);
+                    //userBooking.setServices(spinnerServices.getSelectedItem().toString().trim());
+                    //userBooking.setServices(nServices);
+
+                    bk.setName(name);
+                    bk.setPhoneNumber(number);
+                    bk.setDate(date);
+                    bk.setTime(time);
+                    bk.setServices(nServices);
+                    databaseReference.setValue(bk);
+                    //databaseReference.setValue(userBooking);
 
                     Toast.makeText(BookingForm.this, "Booking Details has been sent!", Toast.LENGTH_SHORT).show();
                     finish();
