@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,8 +25,8 @@ import com.google.firebase.storage.FirebaseStorage;
 public class SecondActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private ImageView profileMenu, aboutUs, feedback, contactUs, faq, displayBooking;
-    private  TextView profileName, bookingForm;
+    private LinearLayout profileMenu, aboutUs, feedback, contactUs, faq, displayBooking, services;
+    private TextView profileName, bookingForm;
     private FirebaseDatabase firebaseDatabase;
 
     @Override
@@ -42,6 +43,8 @@ public class SecondActivity extends AppCompatActivity {
         faq = findViewById(R.id.displayFAQ);
         bookingForm = findViewById(R.id.bookingForm);
         displayBooking = findViewById(R.id.displayBooking);
+        services = findViewById(R.id.services);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -110,6 +113,13 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SecondActivity.this, DisplayBooking.class));
+            }
+        });
+
+        services.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SecondActivity.this, DisplayServices.class));
             }
         });
 

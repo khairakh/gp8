@@ -2,11 +2,17 @@
     <string name="app_name">SalonTIME</string>
 
     <string-array name="services">
-        <item>services1</item>
-        <item>services2</item>
-        <item>services3</item>
-        <item>services4</item>
-        <item>services5</item>
-        <item>services6</item>
+        <item></item>
+        <item>Haircut (short hair)</item>
+        <item>Haircut (long hair)</item>
+        <item>Blowdry (short hair)</item>
+        <item>Blowdry (long hair)</item>
+        <item>Coloring (short hair)</item>
+        <item>Coloring (long hair)</item>
+        <item>Rebonding (short hair)</item>
+        <item>Rebonding (long hair)</item>
+        <item>Extensions (short hair)</item>
+        <item>Extensions (long hair)</item>
     </string-array>
+
 </resources>

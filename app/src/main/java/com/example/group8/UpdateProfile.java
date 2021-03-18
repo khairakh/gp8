@@ -131,32 +131,54 @@ public class UpdateProfile extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = newUserName.getText().toString();
-                String number = newUserPhoneNumber.getText().toString();
-                String email = newUserEmail.getText().toString();
+                if (validate()){
+                    String name = newUserName.getText().toString();
+                    String number = newUserPhoneNumber.getText().toString();
+                    String email = newUserEmail.getText().toString();
 
-                UserProfile userProfile = new UserProfile(email, name, number);
+                    UserProfile userProfile = new UserProfile(email, name, number);
 
-                databaseReference.setValue(userProfile);
+                    databaseReference.setValue(userProfile);
 
-                StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Picture"); //User Id/Images/Profile_pic
-                UploadTask uploadTask = imageReference.putFile(imagePath);
+                    StorageReference imageReference = storageReference.child(firebaseAuth.getUid()).child("Images").child("Profile Picture"); //User Id/Images/Profile_pic
+                    UploadTask uploadTask = imageReference.putFile(imagePath);
 
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(UpdateProfile.this, "Photo exceeds 1mb", Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(UpdateProfile.this,"Upload Successful", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(UpdateProfile.this, UpdateProfile.class));
-                    }
-                });
+                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(UpdateProfile.this, "Photo exceeds 1mb", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(UpdateProfile.this,"Upload Successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(UpdateProfile.this, UpdateProfile.class));
+                        }
+                    });
+                }
+
 
             }
         });
+    }
+
+    public Boolean validate(){
+        boolean result = false;
+
+        String name = newUserName.getText().toString();
+        String number = newUserPhoneNumber.getText().toString();
+        String email = newUserEmail.getText().toString();
+
+        if(name.isEmpty()) {
+            Toast.makeText(this, "Name can't be empty.", Toast.LENGTH_SHORT).show();
+        }else if(number.isEmpty()){
+            Toast.makeText(this, "Phone number can't be empty.", Toast.LENGTH_SHORT).show();
+        }else if(email.isEmpty()){
+            Toast.makeText(this, "Email can't be empty.", Toast.LENGTH_SHORT).show();
+        }else {
+            result = true;
+        }
+        return result;
     }
 
     @Override

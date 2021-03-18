@@ -54,6 +54,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/profileMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -66,7 +67,6 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/profileMenu"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_profile" />
@@ -82,6 +82,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/displayBooking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -94,7 +95,6 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/displayBooking"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_booking" />
@@ -110,6 +110,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/displayFAQ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -122,7 +123,6 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/displayFAQ"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_faq" />
@@ -155,6 +155,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/services"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
@@ -236,6 +237,7 @@
             android:orientation="horizontal"
             android:paddingBottom="20dp">
             <LinearLayout
+                android:id="@+id/aboutUs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -248,7 +250,6 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/aboutUs"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_scissors" />
@@ -264,6 +265,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/feedback"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -276,7 +278,6 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/feedback"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_receipt" />
@@ -292,6 +293,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/contactUs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -304,7 +306,6 @@
 
                     <ImageView
                         android:layout_centerInParent="true"
-                        android:id="@+id/contactUs"
                         android:layout_height="30dp"
                         android:layout_width="30dp"
                         android:src="@drawable/icon_faq" />

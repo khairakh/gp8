@@ -137,9 +137,14 @@ public class RegistrationActivity extends AppCompatActivity {
          email = userEmail.getText().toString();
          number = userPhoneNumber.getText().toString();
 
-        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || number.isEmpty() || imagePath == null) {
-            Toast.makeText(this, "Please enter all the details", Toast.LENGTH_SHORT).show();
-        }else {
+        if(name.isEmpty() || password.isEmpty() || email.isEmpty() || number.isEmpty()) {
+            Toast.makeText(this, "Please enter all the details!", Toast.LENGTH_SHORT).show();
+        }else if(password.length() < 6){
+            Toast.makeText(this, "Password length must be more than 6!", Toast.LENGTH_SHORT).show();
+        }else if(imagePath == null){
+            Toast.makeText(this, "Please enter your profile picture!", Toast.LENGTH_SHORT).show();
+        }
+        else {
             result = true;
         }
         return result;
