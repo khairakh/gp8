@@ -2,17 +2,16 @@
     <string name="app_name">SalonTIME</string>
 
     <string-array name="services">
-        <item></item>
-        <item>Haircut (short hair)</item>
-        <item>Haircut (long hair)</item>
-        <item>Blowdry (short hair)</item>
-        <item>Blowdry (long hair)</item>
-        <item>Coloring (short hair)</item>
-        <item>Coloring (long hair)</item>
-        <item>Rebonding (short hair)</item>
-        <item>Rebonding (long hair)</item>
-        <item>Extensions (short hair)</item>
-        <item>Extensions (long hair)</item>
+        <item>Haircut (short hair) - RM48</item>
+        <item>Haircut (long hair) - RM66</item>
+        <item>Blowdry (short hair) - RM50</item>
+        <item>Blowdry (long hair) - RM70</item>
+        <item>Coloring (short hair) - RM180</item>
+        <item>Coloring (long hair) - RM280</item>
+        <item>Rebonding (short hair) - RM150</item>
+        <item>Rebonding (long hair) - RM250</item>
+        <item>Extensions (short hair) - RM95</item>
+        <item>Extensions (long hair) - RM140</item>
     </string-array>
 
 </resources>

@@ -39,18 +39,18 @@ public class DisplayBooking extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        databaseReference = firebaseDatabase.getInstance().getReference("Booking Info").child(firebaseAuth.getUid());
+        databaseReference = firebaseDatabase.getInstance().getReference("Booking Data").child(firebaseAuth.getUid());
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UserBooking userBooking = snapshot.getValue(UserBooking.class);
+                BookingData bookingData = snapshot.getValue(BookingData.class);
 
-                dName.setText("Name: " + userBooking.getName());
-                dNumber.setText("Phone Number: " + userBooking.getPhoneNumber());
-                dDate.setText("Date: " + userBooking.getDate());
-                dTime.setText("Time: " + userBooking.getTime());
-                dService.setText("Service: " + userBooking.getServices());
+                dName.setText("Name: " + bookingData.getName());
+                dNumber.setText("Phone Number: " + bookingData.getPhoneNumber());
+                dDate.setText("Date: " + bookingData.getDate());
+                dTime.setText("Time: " + bookingData.getTime());
+                dService.setText("Service: " + bookingData.getServices());
             }
 
             @Override

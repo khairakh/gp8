@@ -141,14 +141,14 @@ public class BookingForm extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 int index = arg0.getSelectedItemPosition();
-
-                if (index == 0){
+                nServices = services[index];
+                /*if (index == 0){
                     Toast.makeText(getBaseContext(), "Please select a service", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     nServices = services[index];
                     Toast.makeText(getBaseContext(), "You have selected " + services[index], Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
 
             @Override
